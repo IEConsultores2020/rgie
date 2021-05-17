@@ -1,0 +1,37 @@
+
+
+<%= link_to 'Agregar Departamento', new_departamento_path %>
+<br>
+<h2>Importar departamentos</h2>
+<%= form_tag import_departamentos_path, multipart: true do %>
+  <%= file_field_tag :file %>
+<br>
+  <%= submit_tag "Importar" %>
+<% end %>
+<br>
+<h1>Listado de Departamentos   <%= link_to '+', new_departamento_path %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Pais</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @departamentos.each do |departamento| %>
+      <tr>
+        <td><%= departamento.name %></td>
+        <td><%= departamento.pai.name%></td>         
+        <td><%= departamento.user.name %></td>
+        <td><%= link_to 'Show', departamento %></td>
+        <td><%= link_to 'Edit', edit_departamento_path(departamento) %></td>
+        <td><%= link_to 'Destroy', departamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

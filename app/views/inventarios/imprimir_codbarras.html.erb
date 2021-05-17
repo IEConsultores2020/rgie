@@ -1,0 +1,47 @@
+
+<table >
+  
+   
+  <tbody>   
+    
+    <% if @inventarios.present? %>
+    
+    <% @inventarios.each_slice(6) do |slice| %>  
+      <tr rowspan="2">
+        
+      <% slice.each do |inventario| %> 
+        <%
+        @valor = {"0"=>"V","1"=>"I","2"=>"Z","3"=>"E","4"=>"A","5"=>"S","6"=>"G","7"=>"F","8"=>"B","9"=>"P",}
+        @venta = ""
+        @compra = ""
+        @valor_venta = inventario.valor_venta.to_s.split('')
+        @valor_compra = inventario.valor_unidad.to_s.split('')
+        @valor_venta.each do |number|
+          @venta = @venta + @valor[number]
+        end        
+        @valor_compra.each do |num|
+         @compra = @compra + @valor[num]
+        end %>
+        
+        
+        
+        
+        
+        <td align="center"><% barcode_image_uri("#{inventario.id}",'Code39') %>
+             <% uri = "http://186.114.197.6:3000/barcode_images/Code39_#{inventario.id}.png" %>
+             <img src = <%= uri %> width="120" height="20" /><br>  
+             <font style="font-size:8px" ><%= @compra %><%= "#{inventario.articulo_nombre}" %>
+              <%= @venta %>
+            </font>
+            
+        </td>    
+      <% end %> 
+        
+      </tr>
+    <% end %>
+    
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,0 +1,30 @@
+<%= form_for(@equipo) do |f| %>
+  <% if @equipo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@equipo.errors.count, "error") %> prohibited this equipo from being saved:</h2>
+
+      <ul>
+      <% @equipo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :referencia %><br>
+    <%= f.text_field :referencia %>
+  </div>
+  <div class="field">
+    <%= f.label :descontinuado %>
+    <%= f.radio_button :descontinuado, 1 , :checked => true , :value => 0, :checked => false  %>
+
+  </div>
+  <div class="field">
+    <%= f.label :fabricante_id %><br>    
+    <%= f.collection_select :fabricante_id, Fabricante.order(:nombre), :id, :nombre, include_blank: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

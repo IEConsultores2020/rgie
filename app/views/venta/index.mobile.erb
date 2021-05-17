@@ -1,0 +1,16 @@
+
+<% title "Ventas" %>
+
+<ul>
+  <% for ventum in @venta %>
+    <li class="arrow">
+      <%= link_to h(ventum.fecha), ventum %>      
+      <%= link_to h(ventum.puntoventum), ventum %></td>
+      <%= link_to h(ventum.user.name), ventum %></td>      
+      <%= link_to h(ventum.equipo), ventum %></td>
+      <%= link_to h(ventum.qexistencia), ventum %></td>
+      <%= link_to h(ventum.qventa), ventum %></td>
+      <%= link_to 'Show', ventum %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha_ingreso: 2015-03-14
+  moneda: MyString
+  cantidad_integer: MyString
+  valor_unidad: 1
+  valor_total: 1
+  tienda_id: 
+  articulo_id: 
+
+two:
+  fecha_ingreso: 2015-03-14
+  moneda: MyString
+  cantidad_integer: MyString
+  valor_unidad: 1
+  valor_total: 1
+  tienda_id: 
+  articulo_id: 

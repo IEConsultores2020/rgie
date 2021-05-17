@@ -1,0 +1,53 @@
+Cambios en objetos para que incluya autenticació:
+
+rails g migration AddUsertToAticulo user:belongs_to
+
+rake db:migrate
+
+
+1.  articulos_controller_rb adiciona en def articulo_params
+:user_id
+
+2.  articulos.rb (apps\models\)
+belongs_to :user
+
+3.  (app\views)
+3.1.  _form_html_erb (esto luego se borra, no hacer nada)
+3.2.  index.html.erb
+        <th>Vendedor</th>
+
+        <td><%= articulo.user_name %></td>
+3.3. show.html.erb
+        <p>
+  <strong>Vendedor:</strong>
+  <%= @articulo.user %>
+</p>
+
+
+4. Remove <p id="notice"><%= notice %></p> from the top of the “index” and “show”
+
+5. In items/index.html.erb and items/show.html.erb, change:
+“User” to “Seller” and item.user to item.user_name
+
+6.In items/_form.html.erb remove the complete user_id field (including the surrounding div tags)
+
+7. Probar que todo vaya bien
+
+8. And set a root route in /config/routes.rb
+   root to: "items#index"                    --PENDIENTE SI SE HACE SOLO UNA VEZ
+
+9. And add the following line to the top of ItemsController
+      before_filter :authenticate_user!
+
+10.Then, in the User model, we can add the missing association (app/models/user.rb):
+
+has_many :items
+
+11. And in the ItemsController, make sure that a user is assosciated with each item before it is saved:
+
+def create
+  @item.user_id = current_user.id
+  ...
+end
+
+       

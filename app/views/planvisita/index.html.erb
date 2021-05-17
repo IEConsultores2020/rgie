@@ -1,0 +1,44 @@
+
+<h1>Listing Plan Visitas  
+  <% if can? :create, Planvisitum %>
+    <%= link_to '+', new_planvisitum_path %>
+  <% end %>
+</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Usuarioasignado</th>
+      <th>Fechavisita</th>
+      <th>Puntoventum</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @planvisita.each do |planvisitum| %>
+      <tr>
+        <td><%= planvisitum.usuarioasignados.name %></td>
+        <td><%= planvisitum.fechavisita %></td>
+        <td><%= planvisitum.puntoventum.name %></td>
+        <td><%= planvisitum.user.name %></td>
+        <td><%= link_to 'Show', planvisitum %></td>
+        <td>
+          <% if can? :update, planvisitum %>
+            <%= link_to 'Edit', edit_planvisitum_path(planvisitum) %>
+          <% end %>
+        </td>
+        <td>
+            <% if can? :destroy, planvisitum %>
+              <%= link_to 'Destroy', planvisitum, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plan Visita', new_planvisitum_path %>

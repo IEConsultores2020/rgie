@@ -1,0 +1,23 @@
+
+<p>
+  <strong>Usuarioasignado:</strong>
+  <%= @planvisitum.usuarioasignados.name %>
+</p>
+
+<p>
+  <strong>Fechavisita:</strong>
+  <%= @planvisitum.fechavisita %>
+</p>
+
+<p>
+  <strong>Puntoventum:</strong>
+  <%= @planvisitum.puntoventum.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @planvisitum.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_planvisitum_path(@planvisitum) %> |
+<%= link_to 'Back', planvisita_path %>

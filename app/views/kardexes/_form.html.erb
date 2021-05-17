@@ -1,0 +1,33 @@
+<%= form_for(@kardex) do |f| %>
+  <% if @kardex.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kardex.errors.count, "error") %> prohibited this kardex from being saved:</h2>
+
+      <ul>
+      <% @kardex.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :valor_compra %><br>
+    <%= f.number_field :valor_compra %>
+  </div>
+  <div class="field">
+    <%= f.label :valor_venta %><br>
+    <%= f.number_field :valor_venta %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_ingreso %><br>
+    <%= f.date_select :fecha_ingreso %>
+  </div>
+  <div class="field">
+    <%= f.label :inventario_id %><br>
+    <%= f.text_field :inventario_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

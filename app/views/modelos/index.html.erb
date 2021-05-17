@@ -1,0 +1,41 @@
+<h1>Listado Modelos</h1>
+<% if can? :create, Modelo %>
+<%= link_to 'Nuevo Modelo', new_modelo_path , class: "btn-primary btn-sm" %><br><br>
+<% end %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Vendedor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @modelos.each do |modelo| %>
+      <tr>
+        <td><%= modelo.codigo %></td>
+        <td><%= modelo.nombre %></td>
+        <td><%= modelo.descripcion %></td>
+        <td><%= modelo.user_name %></td>
+        <td><button type="button" class="btn btn-success btn-sm "><%= link_to 'Mostar', modelo %></button></td>
+        <td>
+          <% if can? :update, modelo %>
+          <button type="button" class="btn btn-success btn-sm "><%= link_to 'Editar', edit_modelo_path(modelo)%></button>          
+          <% end %>
+        </td>
+        <td>
+          <% if can? :destroy, modelo %>
+          <button type="button" class="btn btn-danger btn-sm"><%= link_to 'Eliminar', modelo, method: :delete, data: { confirm: 'Esta seguro de Eliminar?' } %></button>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

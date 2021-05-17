@@ -1,0 +1,16 @@
+<% title "Punto Venta" %>
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@puntoventum.latitude}%2C#{@puntoventum.longitude}" %>
+
+<h3>Nearby locations</h3>
+<ul>
+<% for puntoventum in @puntoventum.nearbys(10) %>
+  <li><%= link_to puntoventum.direccion, puntoventum %> (<%= puntoventum.distance.round(2) %> miles)</li>
+<% end %>
+</ul>
+
+<%= render :partial => 'form' %>
+
+
+
+

@@ -1,0 +1,51 @@
+<p>
+  <strong>Name:</strong>
+  <%= @puntoventum.name %>
+</p>
+
+<p>
+  <strong>Mtsmaxdistancia:</strong>
+  <%= @puntoventum.mtsmaxdistancia %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @puntoventum.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @puntoventum.longitude %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @puntoventum.address %>
+</p>
+
+<p>
+  <strong>Telefonos:</strong>
+  <%= @puntoventum.telefonos %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @puntoventum.email %>
+</p>
+
+<p>
+  <strong>Tipocanal:</strong>
+  <%= @puntoventum.tipocanal.nombre %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @puntoventum.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_puntoventum_path(@puntoventum) %> 
+<%= link_to 'Back', puntoventa_path %>
+<br>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@puntoventum.latitude}%2C#{@puntoventum.longitude}" %>

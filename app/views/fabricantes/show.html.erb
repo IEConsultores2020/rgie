@@ -1,0 +1,14 @@
+
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @fabricante.nombre %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @fabricante.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_fabricante_path(@fabricante) %> |
+<%= link_to 'Back', fabricantes_path %>

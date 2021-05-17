@@ -1,0 +1,15 @@
+<% title "Visitas" %>
+<%= "Visitas" %>
+
+<ul>
+  <% for visitum in @visita%>  
+   <div class="ui-nodisc-icon ui-alt-icon">
+   	 <%= link_to "Nuevo", new_visitum_path, :class => "ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-inline"%>
+     <li class="arrow">
+       <%= link_to h(visitum.puntoventum.name), visitum, :class => "ui-btn ui-shadow ui-corner-all ui-icon-eye ui-btn-icon-left",   id: "btn", method: :get   %><br>
+       <%= visitum.user.name %><br>
+     </li>
+  <% end %>
+</ul>
+
+

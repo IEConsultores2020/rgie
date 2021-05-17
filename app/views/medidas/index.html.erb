@@ -1,0 +1,46 @@
+<h1>Listado Unidad Medidas</h1>
+<% if can? :create, Medida %>
+<%= link_to 'Nuevo Unidad Medida', new_medida_path , class: "btn-primary btn-sm" %><br><br>
+<% end %>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Vendedor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medidas.each do |medida| %>
+      <tr>
+        <td><%= medida.codigo %></td>
+        <td><%= medida.nombre %></td>
+        <td><%= medida.descripcion %></td>
+        <td><%= medida.user_name %></td>      
+        <td><button type="button" class="btn btn-success btn-sm "><%= link_to 'Mostrar', medida %></button></td>
+        <td>
+          <% if can? :update, medida %>
+            <button type="button" class="btn btn-success btn-sm ">
+            <%= link_to 'Editar', edit_medida_path(medida) %>
+            </button>
+          <% end %>
+        </td>
+        <td>
+          <% if can? :destroy, medida %>
+            <button type="button" class="btn btn-danger btn-sm">
+            <%= link_to 'Eliminar', medida, method: :delete, data: { confirm: 'Esta seguro de eliminar?' } %>
+            </button>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

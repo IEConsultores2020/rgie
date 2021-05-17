@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  valor_compra: 1
+  valor_venta: 1
+  fecha_ingreso: 2016-08-30
+  inventario_id: 
+
+two:
+  valor_compra: 1
+  valor_venta: 1
+  fecha_ingreso: 2016-08-30
+  inventario_id: 

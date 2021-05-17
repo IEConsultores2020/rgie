@@ -1,0 +1,24 @@
+
+
+<p>
+  <strong>Referencia:</strong>
+  <%= @equipo.referencia %>
+</p>
+
+<p>
+  <strong>Descontinuado:</strong>
+  <%= @equipo.descontinuado %>
+</p>
+
+<p>
+  <strong>Fabricante:</strong>
+  <%= @equipo.fabricante.nombre %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @equipo.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_equipo_path(@equipo) %> |
+<%= link_to 'Back', equipos_path %>

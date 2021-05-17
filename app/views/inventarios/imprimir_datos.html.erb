@@ -1,0 +1,44 @@
+
+<table  >
+  <thead>
+    <tr>
+      <th style="font-size:10px">Fecha ingreso</th>
+      <th style="font-size:10px">Num factura</th>
+      <th style="font-size:10px">Descripcion</th>
+      <th style="font-size:10px">Articulo</th>  
+      <th style="font-size:10px">Cantidad</th>
+      <th style="font-size:10px">Valor Compra</th>
+      <th style="font-size:10px">Valor Venta</th>
+      <th style="font-size:10px">Codigo de barras</th>
+    </tr>
+    <tr></tr>   
+  </thead>
+   
+  <tbody>   
+    
+    <% if @inventarios.present? %>
+    
+    <% @inventarios.each_slice(1) do |slice| %>  
+      <tr>
+        
+      <% slice.each do |inventario| %>
+        <td style="font-size:10px"><%= inventario.fecha_ingreso %></td>
+        <td style="font-size:10px"><%= inventario.num_factura %></td>
+        <td style="font-size:10px"><%= inventario.articulo_descripcion %></td>
+        <td style="font-size:10px"><%= inventario.articulo_nombre %></td>
+        <td style="font-size:10px" align="right"> <%=  number_with_precision(inventario.cantidad_integer, :precision => 2, :separator => ',', :delimiter => '.', :strip_insignificant_zeros => true)  %></td>
+        <td style="font-size:10px" align="right"><%= number_with_precision(inventario.valor_unidad, :precision => 0, :delimiter => '.') %></td>
+        <td style="font-size:10px" align="right"><%= number_with_precision(inventario.valor_venta, :precision => 0, :delimiter => '.') %></td>
+        <td ><% barcode_image_uri("#{inventario.id}",'Code39') %>
+             <% uri = "http://186.114.197.6:3000/barcode_images/Code39_#{inventario.id}.png" %>
+             <img src = <%= uri %> width="120" height="20" /></td>    
+         
+      <% end %> 
+        
+      </tr>
+    <% end %>
+    
+    <% end %>
+  </tbody>
+</table>
+

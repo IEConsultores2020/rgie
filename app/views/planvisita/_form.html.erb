@@ -1,0 +1,30 @@
+<%= form_for @planvisitum do |f| %>
+  <% if @planvisitum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@planvisitum.errors.count, "error") %> prohibited this planvisitum from being saved:</h2>
+
+      <ul>
+      <% @planvisitum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :usuarioasignado %><br>    
+    <%= f.collection_select :usuarioasignado, @users, :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :fechavisita %><br>
+    <%= f.date_select :fechavisita %>
+  </div>
+  <div class="field">
+    <%= f.label :puntoventum_id %><br>
+    <%= f.collection_select :puntoventum_id, @puntoventa, :id, :name, include_blank: false , :prompt => "Please Select a Punto Ventum" ,  :include_blank => false, :multiple =>  true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @pai.name %>
+</p>
+
+<p>
+  <strong>Huso:</strong>
+  <%= @pai.huso %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pai.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_pai_path(@pai) %> |
+<%= link_to 'Back', pais_path %>

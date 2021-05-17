@@ -1,0 +1,15 @@
+<% title "Programacion Visitas" %>
+<%= "Programacion Visitas" %>
+  <ul> 
+  <% for planvisitum in @planvisita%>
+     
+       <div class="ui-nodisc-icon ui-alt-icon">
+       <li class="arrow">
+		   <%= link_to planvisitum.puntoventum.name , planvisitum , :class => "ui-btn ui-shadow ui-corner-all ui-icon-eye ui-btn-icon-left",   id: "btn", method: :get  %>
+		   <% if current_user.admin? %>      
+	    	 <%= planvisitum.usuarioasignados.name %><br>
+		   <% end %>
+			<%= planvisitum.fechavisita %><br>
+	    </li>	
+  <% end %>
+  </ul>

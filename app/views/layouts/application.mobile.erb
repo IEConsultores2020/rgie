@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="/images/logo_nanducho.png" />
+    <meta charset="UTF-8" />
+    <title><%= h(yield(:title) || "Untitled") %></title>
+    <meta content="width=device-width, minimum-scale=1, maximum-scale=1" name="viewport">
+    <%= stylesheet_link_tag "/jqtouch/jqtouch.min.css", "/jqtouch/themes/apple/theme.min.css" %>
+
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <%= yield(:head) %>
+  </head>
+  <body>
+      <div data-role="header"  data-position="fixed" >  
+        <ul>      
+        <% if user_signed_in? %>
+          <h2><%= current_user.email %></h2>
+        <% end %>
+        <% if not user_signed_in? %>
+          <h2><%= "Registro Diario" %></h2>
+        <% end %>
+      </ul>
+      </div>
+
+      <div class="current" data-position="fixed">
+
+        <%- if show_title? -%>
+          <%= yield(:toolbar) %>
+          <div class="ui-nodisc-icon ui-alt-icon">
+            <%= link_to "Home", root_path, :class => "ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-notext ui-btn-inline"  %>
+            <%= link_to "Back", :back, :class => "ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext ui-btn-inline" unless current_page? root_path %>
+
+            <% if user_signed_in? %>
+            <%= link_to "Sign out", destroy_user_session_path, :method => :get, :class => "ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-inline"  %>       
+            <% end %>     
+            <h1><%=h yield(:title) %></h1>             
+          </div>
+        <%- end -%>
+      
+        <% unless flash.empty? %>
+          <div class="info">
+            <%- flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+            <%- end -%>
+          </div>
+        <% end %>
+    
+        <%= yield %>
+      </div>  
+  </body>
+</html>

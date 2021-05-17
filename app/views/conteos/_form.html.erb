@@ -1,0 +1,29 @@
+<%= form_for(@conteo) do |f| %>
+  <% if @conteo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@conteo.errors.count, "error") %> prohibited this conteo from being saved:</h2>
+
+      <ul>
+      <% @conteo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cantidad %><br>
+    <%= f.number_field :cantidad %>
+  </div>
+  <div class="field">
+    <%= f.label :codbarras %><br>
+    <%= f.text_field :codbarras %>
+  </div>
+  <div class="field">
+    <%= f.label :inventario_id %><br>
+    <%= f.text_field :inventario_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

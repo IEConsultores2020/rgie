@@ -1,0 +1,50 @@
+<table >
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Fecha ingreso</th>
+      <th>Numero de factura</th>
+      <th>Articulo</th>  
+      <th>Descripcion</th>
+      <th>Componente</th>
+      <th>Modelo</th>
+      <th>Unidad de medida</th>
+      <th>Cantidad</th>
+      <th>Valor Compra</th>
+      <th>Valor Venta</th>
+      <th>Valor Total</th>
+    </tr>
+    <tr></tr>   
+  </thead>
+   
+  <tbody>   
+    
+    <% if @inventarios.present? %>
+    
+    <% @inventarios.each_slice(1) do |slice| %>  
+      <tr rowspan="2">
+        
+      <% slice.each do |inventario| %>  
+        <td><%= inventario.id %></td>
+        <td><%= inventario.fecha_ingreso %></td>
+        <td><%= inventario.num_factura %></td>
+        <td><%= inventario.articulo_nombre %></td>
+        <td><%= inventario.articulo_descripcion %></td>
+        <td><%= inventario.componente_nombre %></td>
+        <td><%= inventario.modelo_nombre %></td>
+        <td><%= inventario.medida_nombre %></td>
+        <td align="right"> <%=  number_with_precision(inventario.cantidad_integer, :precision => 2, :separator => ',', :delimiter => '.', :strip_insignificant_zeros => true)  %></td>
+        <td align="right"><%= number_with_precision(inventario.valor_unidad, :precision => 0, :delimiter => '.') %></td>
+        <td align="right"><%= number_with_precision(inventario.valor_venta, :precision => 0, :delimiter => '.') %></td>
+        <td align="right"><%= number_with_precision(inventario.valor_total, :precision => 2, :separator => ',', :delimiter => '.', :strip_insignificant_zeros => true)  %></td>
+ 
+      <% end %> 
+        
+      </tr>
+    <% end %>
+    
+    <% end %>
+  </tbody>
+</table>
+
+<br>

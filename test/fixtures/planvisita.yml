@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usuarioasignado: 1
+  fechavisita: 2015-11-17
+  puntoventum_id: 
+  user_id: 
+
+two:
+  usuarioasignado: 1
+  fechavisita: 2015-11-17
+  puntoventum_id: 
+  user_id: 

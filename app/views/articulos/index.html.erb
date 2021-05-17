@@ -1,0 +1,71 @@
+
+<h1>Listado de articulos</h1>
+
+<% if can? :create, Articulo %>
+  <%= link_to 'Articulo Nuevo', new_articulo_path, class: "btn-primary btn-sm" %> |
+  <%= link_to "PDF", articulos_path(:format => "pdf"), class: "btn btn-default btn-sm" %>|
+  <%= link_to "CSV", articulos_path(format: "csv") , class: "btn btn-default btn-sm"%> |
+  <%= link_to "Excel", articulos_path(format: "xls"), class: "btn btn-default btn-sm" %><br><br>
+  <strong>Importar Articulos</strong><br>
+    <%= link_to 'Instructivo', 'https://www.dropbox.com/s/39nl5h4lts0m00q/Instructivo%20para%20importar%20datos%20en%20articulos%20formato%20csv.pdf?dl=0', :target => "_blank", class: "btn btn-default btn-sm" %>
+    <%= link_to 'Plantilla de excel para cargue de archivos', 'https://www.dropbox.com/s/fujkh7xvipu6cob/articulos4.csv?dl=0', :target => "_blank", class: "btn btn-default btn-sm" %><br><br>
+    <%= form_tag import_articulos_path, multipart: true do %>
+    <%= file_field_tag :file %>   
+    <br>
+    <%= submit_tag "Importar", class: "btn btn-default btn-sm" %>
+  <% end %><br>
+
+<% end %>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Descripcion</th>
+      <th>Unidad medida</th>
+      <th>Componente</th>
+      <th>Modelo</th>
+      <%# <th>Vendedor</th> %>
+      <th>Codigo Barras</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articulos.each do |articulo| %>
+      <tr>
+        <td><%= articulo.nombre %></td>
+        <td><%= articulo.descripcion %></td>
+        <td><%= articulo.medida_nombre %></td>
+        <td><%= articulo.componente_nombre %></td>
+        <td><%= articulo.modelo_nombre %></td>
+        <%#<td><% articulo.user_name ></td> %>        
+        <td> <% barcode_image_uri(articulo.nombre,'Code39') %>
+             <% uri = "/barcode_images/Code39_#{articulo.nombre}.png" %>
+             <img src = <%= uri %> width="110" height="20" /></td>
+
+
+        
+
+        <td><button type="button" class="btn btn-success btn-sm "><%= link_to 'Mostrar', articulo %></button></td>
+    
+        <td>
+          <% if can? :update, articulo %>
+            <button type="button" class="btn btn-success btn-sm"><%= link_to 'Editar', edit_articulo_path(articulo) %></button>
+            
+          <% end %>
+        </td>
+
+        <td>
+          <% if can? :destroy, articulo %>
+            <button type="button" class="btn btn-danger btn-sm"><%= link_to 'Eliminar', articulo, method: :delete, data: { confirm: 'Esta seguro de Eliminar?' } %></button>
+            
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

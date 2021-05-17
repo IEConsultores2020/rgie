@@ -1,0 +1,50 @@
+<%= form_for(@inventario) do |f| %>
+  <% if @inventario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inventario.errors.count, "error") %> prohibited this inventario from being saved:</h2>
+
+      <ul>
+      <% @inventario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :tienda_id %><br>
+    <%= f.collection_select :tienda_id, Tienda.order(:nombre), :id, :nombre, include_blank: false, :default => 'EURO1' %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_ingreso %><br>
+    <%= f.datetime_select :fecha_ingreso %>
+  </div>
+  <div class="field">
+    <%= f.label :num_factura %><br>
+    <%= f.text_field :num_factura, include_blank: false %>
+  </div>   
+  <div class="field">
+    <%= f.label :moneda %><br>
+    <%= f.text_field :moneda, include_blank: false, :default => 'COP' %>
+  </div>    
+  <div class="field">
+    <%= f.label :articulo_id %><br>    
+    <%= f.collection_select :articulo_id, Articulo.order(:nombre), :id, :nombre, 
+        include_blank: false %>
+  </div>  
+  <div class="field">
+    <%= f.label :cantidad_integer %><br>
+    <%= f.number_field :cantidad_integer, :default => 0, :step => 0.01 %>
+  </div>
+  <div class="field">
+    <%= f.label :valor_unidad %><br>
+    <%= f.number_field :valor_unidad, :default => 0 %>
+  </div>
+<div class="field">
+    <%= f.label :valor_venta %><br>
+    <%= f.number_field :valor_venta, :default => 0 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

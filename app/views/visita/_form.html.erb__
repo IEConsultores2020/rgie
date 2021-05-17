@@ -1,0 +1,46 @@
+<%= form_for(@visitum) do |f| %>
+  <% if @visitum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@visitum.errors.count, "error") %> prohibited this visitum from being saved:</h2>
+
+      <ul>
+      <% @visitum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :puntoventum_id %><br>
+    <%= f.collection_select :puntoventum_id, @planvisita, :puntoventum_id, :name, include_blank: true, :prompt => "Please Select a Punto Ventum",  :include_blank => false, :multiple =>  true   %>
+
+  </div>
+  <div class="field">
+    <%= f.label :horaactual %><br>    
+    <%= f.datetime_select :horaingreso, :default => {:year => Time.now.year, :month => Time.now.month, :day => Time.now.day, :hour => Time.now.hour} %>    
+  </div>
+<div class="field">
+    <%= f.label :latitude_in %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude_in %><br>
+    <%= f.text_field :longitude %>
+  </div>  
+  <div class="field">
+    <%= f.label :horasalida %><br>
+    <%= f.datetime_select :horasalida, :include_blank => true %>
+  </div>
+<div class="field">
+    <%= f.label :latitude_out %><br>
+    <%= f.text_field :latitude2 %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude_out %><br>
+    <%= f.text_field :longitude2 %>
+  </div>  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

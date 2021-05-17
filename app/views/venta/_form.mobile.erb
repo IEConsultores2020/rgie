@@ -1,0 +1,38 @@
+<%= form_for(@ventum) do |f| %>
+  <% if @ventum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ventum.errors.count, "error") %> prohibited this ventum from being saved:</h2>
+
+      <ul>
+      <% @ventum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :qexistencia %><br>
+    <%= f.number_field :qexistencia %>
+  </div>
+  <div class="field">
+    <%= f.label :qventa %><br>
+    <%= f.number_field :qventa %>
+  </div>
+  <div class="field">
+    <%= f.label :puntoventum_id %><br>
+    <%= f.text_field :puntoventum_id %>
+  </div>
+  <div class="field">
+    <%= f.label :equipo_id %><br>
+    <%= f.text_field :equipo_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

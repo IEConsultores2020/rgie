@@ -1,0 +1,77 @@
+<header class="navbar navbar-fixed-top navbar-inverse">    
+  <div id="hcontainer" class="container">
+    <nav>      
+      <% if user_signed_in? %>        
+        <div align="right"> Esta conectado como: <%= current_user.email %> </div>      
+        <nav>
+          <ul class="nav navbar-nav navbar-left">
+            <li><%= link_to "Inicio", root_path %></li> 
+
+            <% if current_user.admin? %>               
+               <li><%= link_to "Usuarios", users_path %></li>               
+               <li><%= link_to "Tipos Canal", tipocanals_path %></li>
+               <li><%= link_to "Canales", canals_path %></li>
+               <li><%= link_to "Fabricantes", fabricantes_path %></li>
+               <li><%= link_to "Equipos", equipos_path %></li> 
+               <li><%= link_to "Paises", pais_path %></li>
+
+               <li><%= link_to "Departamentos", departamentos_path %></li>
+               <li><%= link_to "Regiones", regions_path %></li>                              
+               <li><%= link_to "Ciudades", ciudads_path %></li>
+               <li><%= link_to "Puntos de Venta", puntoventa_path %></li>
+               <li><%= link_to "Plan Visitas", planvisita_path %></li>
+               <li><%= link_to "Ventas", venta_path %></li>
+            <% end %>
+
+            <% if current_user.regular? %>
+               <li><%= link_to "Puntos de Venta", puntoventa_path %></li>
+               <li><%= link_to "Plan Visitas", planvisita_path %></li>
+               <li><%= link_to "Ventas", venta_path %></li>
+            <% end %>
+
+            <% if current_user.adminaccount? %>
+               <li><%= link_to "Usuarios", users_path %></li>
+               <li><%= link_to "Plan Visitas", planvisita_path %></li>               
+               <li><%= link_to "Puntos de Venta", puntoventa_path %></li>
+               <li><%= link_to "Ventas", venta_path %></li>
+            <% end %>            
+
+            <% if current_user.supervisor? %>
+               <li><%= link_to "Usuarios", users_path %></li>
+               <li><%= link_to "Plan Visitas", planvisita_path %></li>               
+               <li><%= link_to "Visitas", visita_path %></li>               
+               <li><%= link_to "Ventas", venta_path %></li>
+            <% end %>          
+
+            <% if current_user.merchandizer? %>
+               <li><%= link_to "Plan Visitas", planvisita_path %></li>               
+               <li><%= link_to "Ventas", venta_path %></li>
+            <% end %>                  
+
+            <% if current_user.promoter? %>
+               <li><%= link_to "Plan Visitas", planvisita_path %></li>
+               <li><%= link_to "Visitas", visita_path %> </li>
+               <li><%= link_to "Ventas", venta_path %></li>
+            <% end %>                  
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">            
+            <li><%= link_to "Edit profile" , edit_user_registration_path %> </li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :get %></li>
+          </ul>
+        </nav>
+      <% else %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Sign up", new_user_registration_path%> </li>
+          <li><%= link_to "sign in", new_user_session_path %></li>
+          </ul>
+        </nav>
+      <% end %>
+       
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <% end %>
+    </nav>
+  </div>
+</header>

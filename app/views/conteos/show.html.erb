@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @conteo.cantidad %>
+</p>
+
+<p>
+  <strong>Codbarras:</strong>
+  <%= @conteo.codbarras %>
+</p>
+
+<p>
+  <strong>Inventario:</strong>
+  <%= @conteo.inventario %>
+</p>
+
+<%= link_to 'Edit', edit_conteo_path(@conteo) %> |
+<%= link_to 'Back', conteos_path %>

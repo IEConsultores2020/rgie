@@ -1,0 +1,24 @@
+
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @medida.codigo %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @medida.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @medida.descripcion %>
+</p>
+
+<p>
+  <strong>Vendedor:</strong>
+  <%= @medida.user %>
+</p>
+
+<%= link_to 'Editar', edit_medida_path(@medida) %> |
+<%= link_to 'Atras', medidas_path %>

@@ -1,0 +1,25 @@
+<%= form_for(@pai) do |f| %>
+  <% if @pai.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pai.errors.count, "error") %> prohibited this pai from being saved:</h2>
+
+      <ul>
+      <% @pai.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :huso %><br>
+    <%= f.time_zone_select :huso, ActiveSupport::TimeZone.us_zones, :default => "Pacific Time (US & Canada)" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

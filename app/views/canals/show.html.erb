@@ -1,0 +1,18 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @canal.name %>
+</p>
+
+<p>
+  <strong>Tipocanal:</strong>
+  <%= @canal.tipocanal.nombre %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @canal.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_canal_path(@canal) %> |
+<%= link_to 'Back', canals_path %>

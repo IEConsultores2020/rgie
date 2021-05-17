@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Kardexes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Valor compra</th>
+      <th>Valor venta</th>
+      <th>Fecha ingreso</th>
+      <th>Inventario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @kardexes.each do |kardex| %>
+      <tr>
+        <td><%= kardex.valor_compra %></td>
+        <td><%= kardex.valor_venta %></td>
+        <td><%= kardex.fecha_ingreso %></td>
+        <td><%= kardex.inventario %></td>
+        <td><%= link_to 'Show', kardex %></td>
+        <td><%= link_to 'Edit', edit_kardex_path(kardex) %></td>
+        <td><%= link_to 'Destroy', kardex, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Kardex', new_kardex_path %>

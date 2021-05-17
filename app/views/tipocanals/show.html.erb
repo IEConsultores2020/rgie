@@ -1,0 +1,13 @@
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @tipocanal.nombre %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tipocanal.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_tipocanal_path(@tipocanal) %> |
+<%= link_to 'Back', tipocanals_path %>

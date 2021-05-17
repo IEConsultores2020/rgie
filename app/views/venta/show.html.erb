@@ -1,0 +1,33 @@
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @ventum.fecha %>
+</p>
+
+<p>
+  <strong>Qexistencia:</strong>
+  <%= @ventum.qexistencia %>
+</p>
+
+<p>
+  <strong>Qventa:</strong>
+  <%= @ventum.qventa %>
+</p>
+
+<p>
+  <strong>Puntoventum:</strong>
+  <%= @ventum.puntoventum %>
+</p>
+
+<p>
+  <strong>Equipo:</strong>
+  <%= @ventum.equipo %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ventum.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_ventum_path(@ventum) %> |
+<%= link_to 'Back', venta_path %>

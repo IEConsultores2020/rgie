@@ -1,0 +1,53 @@
+<%= form_for(@puntoventum) do |f| %>
+  <% if @puntoventum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@puntoventum.errors.count, "error") %> prohibited this puntoventum from being saved:</h2>
+
+      <ul>
+      <% @puntoventum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :mtsmaxdistancia %><br>
+    <%= f.number_field :mtsmaxdistancia %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :direccion %><br>
+    <%= f.text_field :direccion %>
+  </div>
+  <div class="field">
+    <%= f.label :telefonos %><br>
+    <%= f.text_field :telefonos %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :tipocanal_id %><br>    
+    <%= f.collection_select :tipocanal_id, Tipocanal.order(:nombre), :id, :nombre, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :ciudad_id %><br>
+    <%= f.collection_select :ciudad_id, Ciudad.order(:name), :id, :name, include_blank: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

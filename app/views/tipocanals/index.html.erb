@@ -1,0 +1,28 @@
+
+<h1>Listing Tipos Canal  <%= link_to '+', new_tipocanal_path %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tipocanals.each do |tipocanal| %>
+      <tr>
+        <td><%= tipocanal.nombre %></td>
+        <td><%= tipocanal.user.name %></td>
+        <td><%= link_to 'Show', tipocanal %></td>
+        <td><%= link_to 'Edit', edit_tipocanal_path(tipocanal) %></td>
+        <td><%= link_to 'Destroy', tipocanal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tipo Canal', new_tipocanal_path %>

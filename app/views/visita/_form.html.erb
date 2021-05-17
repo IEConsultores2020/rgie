@@ -1,0 +1,31 @@
+<%= form_for(@visitum) do |f| %>
+  <% if @visitum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@visitum.errors.count, "error") %> prohibited this visitum from being saved:</h2>
+
+      <ul>
+      <% @visitum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :puntoventum_id %><br>
+        <%= f.collection_select :puntoventum_id, @planvisita, :puntoventum_id, :name, include_blank: true, :prompt => "Please Select a Punto Ventum",  :include_blank => false, :multiple =>  true   %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<%- unless @lat_lng %>
+<script>
+  getGeoLocation();
+</script>
+<%- end %>
+<br>
+ 
+
+ 

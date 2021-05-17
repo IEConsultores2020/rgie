@@ -1,0 +1,25 @@
+<%= form_for(@departamento) do |f| %>
+  <% if @departamento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@departamento.errors.count, "error") %> prohibited this departamento from being saved:</h2>
+
+      <ul>
+      <% @departamento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :pais_id %><br>
+    <%= f.collection_select :pais_id, Pai.order(:name), :id, :name, include_blank: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

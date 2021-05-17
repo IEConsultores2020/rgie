@@ -1,0 +1,33 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @ciudad.name %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @ciudad.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @ciudad.longitude %>
+</p>
+
+<p>
+  <strong>Departamento:</strong>
+  <%= @ciudad.departamento.name %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @ciudad.region.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ciudad.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_ciudad_path(@ciudad) %> |
+<%= link_to 'Back', ciudads_path %>

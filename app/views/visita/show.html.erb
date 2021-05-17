@@ -1,0 +1,64 @@
+<p>
+  <strong>Puntoventum:</strong>
+  <%= @visitum.puntoventum.name %>
+</p>
+
+<p>
+  <strong>IPin:</strong>
+  <%= @visitum.IPin %>
+</p>
+
+<p>
+  <strong>LatitudeIn:</strong>
+  <%= @visitum.latitude %>
+</p>
+
+<p>
+  <strong>LongitudeIn:</strong>
+  <%= @visitum.longitude %>
+</p>
+
+<p>
+  <strong>Horaingreso:</strong>
+  <%= @visitum.horaingreso %>
+</p>
+
+<p>
+  <strong>Horasalida:</strong>
+  <%= @visitum.horasalida %>
+</p>
+
+
+<p>
+  <strong>IPout:</strong>
+  <%= @visitum.IPout %>
+</p>
+
+
+<p>
+  <strong>LatitudeOut:</strong>
+  <%= @visitum.latitude2 %>
+</p>
+
+<p>
+  <strong>LongitudeOut:</strong>
+  <%= @visitum.longitude2 %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @visitum.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_visitum_path(@visitum) %> |
+<%= link_to 'Back', visita_path %><br><br><br>
+
+<p>
+  <strong>Ingreso Visita:</strong><br>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@visitum.latitude}%2C#{@visitum.longitude}" %>
+</p>
+
+<p>
+  <strong>Salida Visita:</strong><br>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@visitum.latitude2}%2C#{@visitum.longitude2}" %>
+</p>

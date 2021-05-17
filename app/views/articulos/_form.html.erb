@@ -1,0 +1,45 @@
+<%= form_for(@articulo) do |f| %>
+  <% if @articulo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@articulo.errors.count, "error") %> prohibited this articulo from being saved:</h2>
+
+      <ul>
+      <% @articulo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :foto %><br>
+    <%= f.text_field :foto %>
+  </div>
+  <div class="field">
+    <%= f.label :barcode %><br>
+    <%= f.text_field :barcode %>
+  </div>
+  <div class="field">
+    <%= f.label :unidad_medida_id %><br>
+    <%= f.collection_select :medida_id, Medida.order(:nombre), :id, :nombre, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :componente_id %><br>
+    <%= f.collection_select :componente_id, Componente.order(:nombre), :id, :nombre, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :modelo_id %><br>
+    <%= f.collection_select :modelo_id, Modelo.order(:nombre), :id, :nombre, include_blank: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<%= form_for(@canal) do |f| %>
+  <% if @canal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@canal.errors.count, "error") %> prohibited this canal from being saved:</h2>
+
+      <ul>
+      <% @canal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :tipocanal_id %><br>
+    <%= f.collection_select :tipocanal_id, Tipocanal.order(:nombre), :id, :nombre, include_blank: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

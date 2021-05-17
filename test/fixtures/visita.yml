@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  horaingreso: 2015-11-17
+  horasalida: 2015-11-17
+  planvisitum_id: 
+  user_id: 
+
+two:
+  horaingreso: 2015-11-17
+  horasalida: 2015-11-17
+  planvisitum_id: 
+  user_id: 

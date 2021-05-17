@@ -1,0 +1,31 @@
+<% title "Visitas" %>
+<%= "Visitas .." %>
+<ul>
+	<div class="current">
+	<p>
+	  <strong>PuntoVenta:</strong>
+	  <%= @visitum.puntoventum.name %>
+	</p>
+
+	<p>
+	  <strong>Ingreso:</strong>
+	  <%= @visitum.horaingreso.to_time.strftime('%B %e at %l:%M %p') %>
+	</p>
+
+	<p>
+	  <strong>Salida:</strong>
+	  <% if @visitum.horasalida != nil %>
+	    <%= @visitum.horasalida.to_time.strftime('%B %e at %l:%M %p') %>
+	  <% else %>  
+	    <%= "Salida pendiente" %>
+	  <% end %>
+	</p>
+
+	<p>
+	  <strong>User:</strong>
+	  <%= @visitum.user.name %>
+	</p>
+</ul>
+
+
+

@@ -1,0 +1,71 @@
+<h1>Listing Visitas  <%= link_to '+', new_visitum_path %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>PuntoVenta</th>
+      <th>Horaingreso</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @visita.each do |visitum| %>
+      <tr>
+        <td><%= visitum.puntoventum.name %></td>
+        <td><%= visitum.horaingreso %></td>        
+        <td><%= visitum.user.name %></td>      
+
+        <% if can? :read, visitum %>          
+            <td><%= link_to 'Ver ', visitum  %></td>
+        <% end %>
+        <% if can? :update, visitum %>
+          <% if current_user.id == visitum.user_id and visitum.horasalida == nil %>
+            <td><%= link_to 'Cerrar Visita', edit_visitum_path(visitum) %></td>
+          <% end %>
+        <% end %>
+        <% if can? :destroy, visitum %>
+          <td><%= link_to 'Destroy', visitum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'New Visita', new_visitum_path %>
+
+<p id="demo">Click the button to get your coordinates:</p>
+<button onclick="getLocation()">Try It</button>
+<script>
+    var x=document.getElementById("demo");
+    var lat;
+    var long;
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition);
+
+        }
+        else{x.innerHTML="Geolocation is not supported by this browser.";}
+    }
+    function showPosition(position)
+    {
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+        x.innerHTML="Latitude: " + lat +
+                "<br>Longitude: " + long;
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://190.68.115.123:3002/locations',
+            data: { lat: lat, long: long },
+            contentType: 'application/json',
+            dataType: 'json'
+
+        });
+    }
+</script>

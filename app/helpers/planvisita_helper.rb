@@ -1,0 +1,2 @@
+module PlanvisitaHelper
+end

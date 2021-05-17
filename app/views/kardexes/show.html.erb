@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Valor compra:</strong>
+  <%= @kardex.valor_compra %>
+</p>
+
+<p>
+  <strong>Valor venta:</strong>
+  <%= @kardex.valor_venta %>
+</p>
+
+<p>
+  <strong>Fecha ingreso:</strong>
+  <%= @kardex.fecha_ingreso %>
+</p>
+
+<p>
+  <strong>Inventario:</strong>
+  <%= @kardex.inventario %>
+</p>
+
+<%= link_to 'Edit', edit_kardex_path(@kardex) %> |
+<%= link_to 'Back', kardexes_path %>

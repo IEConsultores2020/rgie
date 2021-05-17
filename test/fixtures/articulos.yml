@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  descripcion: MyString
+  foto: MyString
+  barcode: MyString
+  unidad_medida_id: 
+  componente_id: 
+  modelo_id: 
+
+two:
+  nombre: MyString
+  descripcion: MyString
+  foto: MyString
+  barcode: MyString
+  unidad_medida_id: 
+  componente_id: 
+  modelo_id: 
